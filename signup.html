@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sign Up for Stashh — From Side Gig Cash to Everyday Spends</title>
+    <meta
+      name="description"
+      content="Stashh makes everyday money simple. Save smart, track easy, and live freely — from side gig cash to everyday spends."
+    />
+
+    <link rel="stylesheet" href="/css/access.css" />
+
+    <!-- Stashh Favicon -->
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="access-header">
+      <a class="logo" href="/index.html">stashh</a>
+    </header>
+
+    <!-- Access Container -->
+    <section class="access-container">
+      <div class="access-left">
+        <div class="access-card">
+          <div class="access-card-header">
+            <h2>Sign up</h2>
+            <p>Smarter savings with a side of banter</p>
+          </div>
+
+          <form>
+            <input
+              id="firstname"
+              type="text"
+              placeholder="First Name"
+              required
+            />
+            <input id="lastname" type="text" placeholder="Last Name" required />
+            <input id="email" type="email" placeholder="Email" required />
+
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <span id="password-error" class="error-message"></span>
+
+            <div class="signup-terms">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">
+                I agree to the <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>.
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              Create your account
+            </button>
+          </form>
+
+          <p class="login-text">
+            Already have an account? <a href="login.html">Log in</a>
+          </p>
+
+          <span class="divider">or</span>
+
+          <button class="google-btn">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google logo"
+              class="google-icon"
+            />
+            <span class="google-text">Sign up with Google</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="access-right">
+        <div class="branding">
+          <h1>Welcome to Stashh</h1>
+          <p>Start your journey today.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="access-footer">
+      <p>
+        ©2025 Stashh<a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </p>
+    </footer>
+    <script src="/js/signup.js"></script>
+  </body>
+</html>

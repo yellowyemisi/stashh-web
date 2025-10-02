@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stashh Dashboard — Track, Save & Spend Smarter</title>
+    <meta
+      name="description"
+      content="Stashh makes everyday money simple. Save smart, track easy, and live freely — from side gig cash to everyday spends."
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/dashboard.css" />
+
+    <!-- Stashh Favicon -->
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- SIDEBAR SECTION -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <a href="/index.html"><h2>stashh</h2></a>
+        </div>
+
+        <div class="sidebar-header">
+          <ion-icon class="sidebar-close" name="close-outline"></ion-icon>
+        </div>
+
+        <nav class="sidebar-primary-nav">
+          <ul>
+            <li class="active">
+              <ion-icon class="sidebar-icon" name="home-outline"></ion-icon>
+              <a href="#">Dashboard</a>
+            </li>
+            <li>
+              <ion-icon class="sidebar-icon" name="wallet-outline"></ion-icon>
+              <a href="#">Accounts</a>
+            </li>
+            <li>
+              <ion-icon class="sidebar-icon" name="card-outline"></ion-icon>
+              <a href="#">Transactions</a>
+            </li>
+            <li>
+              <ion-icon class="sidebar-icon" name="cash-outline"></ion-icon>
+              <a href="#">Savings</a>
+            </li>
+          </ul>
+        </nav>
+
+        <nav class="sidebar-secondary-nav">
+          <ul>
+            <li>
+              <ion-icon class="sidebar-icon" name="settings-outline"></ion-icon>
+              <a href="#">Settings</a>
+            </li>
+            <li>
+              <ion-icon
+                class="sidebar-icon"
+                name="help-circle-outline"
+              ></ion-icon>
+              <a href="#">Help Center</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <ul>
+            <li class="logout-btn">
+              <ion-icon name="log-out-outline"></ion-icon>
+              <a class="logout-text" href="#">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- The overlay for Hamburger menu -->
+      <div class="overlay"></div>
+
+      <!-- HEADER SECTION -->
+      <header class="header">
+        <!-- Hamburger (mobile only) -->
+        <button class="hamburger">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <div class="header-welcome-message">
+          <h3 id="welcome-text" class="welcome-message"></h3>
+          <p>Welcome to your finance dashboard</p>
+        </div>
+
+        <div class="header-actions">
+          <ion-icon class="action-icon" name="notifications-outline"></ion-icon>
+
+          <ion-icon class="action-icon" name="mail-outline"></ion-icon>
+
+          <div class="action-profile">
+            <img
+              class="profile-pic"
+              src="/assets/dashboard-avatar.png"
+              alt="Stashh user profile photo"
+            />
+            <span id="profile-name" class="profile-name"></span>
+            <button class="profile-chevron-icon">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN DASHBOARD SECTION -->
+      <main class="main">
+        <section class="dashboard-grid">
+          <!-- LEFT COLUMN -->
+          <div class="dashboard-left">
+            <div class="overview-grid">
+              <div class="overview-card balance-card">
+                <ion-icon class="card-icon" name="wallet-outline"></ion-icon>
+                <div class="card-description">
+                  <h4>Balance</h4>
+                  <p>$10,807</p>
+                </div>
+              </div>
+
+              <div class="overview-card savings-card">
+                <ion-icon class="card-icon" name="cash-outline"></ion-icon>
+                <div class="card-description">
+                  <h4>Savings</h4>
+                  <p>$40,893</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="card recent-transactions">
+              <h3>Recent Transactions</h3>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Zara</td>
+                    <td>3 Aug 2025</td>
+                    <td>$25.99</td>
+                    <td><span class="status completed">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Google Drive</td>
+                    <td>7 Aug 2025</td>
+                    <td>$9.99</td>
+                    <td><span class="status completed">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Electric Bill</td>
+                    <td>12 Aug 2025</td>
+                    <td>$120</td>
+                    <td><span class="status pending">Pending</span></td>
+                  </tr>
+                  <tr>
+                    <td>Uber Ride</td>
+                    <td>21 Aug 2025</td>
+                    <td>$15</td>
+                    <td><span class="status cancelled">Completed</span></td>
+                  </tr>
+                  <tr>
+                    <td>Gym Membership</td>
+                    <td>28 Aug 2025</td>
+                    <td>$45</td>
+                    <td><span class="status cancelled">Cancelled</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Monthly Expenses -->
+            <div class="card card-bar-chart monthly-expenses">
+              <h2>Monthly Expenses</h2>
+              <canvas id="monthlyExpensesChart"></canvas>
+            </div>
+          </div>
+
+          <div class="dashboard-right">
+            <!-- Monthly Spend -->
+            <div class="overview-card monthly-spend">
+              <ion-icon
+                class="card-icon"
+                name="calendar-clear-outline"
+              ></ion-icon>
+              <div class="card-description">
+                <h4>Monthly Spend</h4>
+                <p>$2,906</p>
+              </div>
+            </div>
+
+            <!-- Quick Transfer -->
+            <div class="card quick-transfer">
+              <h3>Quick Transfer</h3>
+              <div class="quick">
+                <div class="avatars">
+                  <ion-icon
+                    class="quick-add-icon"
+                    name="add-outline"
+                  ></ion-icon>
+                  <img
+                    class="avatar"
+                    src="/assets/social images/img-2.jpg"
+                    alt="User avatar"
+                  />
+                  <img
+                    class="avatar"
+                    src="/assets/social images/img-4.jpg"
+                    alt="User avatar"
+                  />
+                  <img
+                    class="avatar"
+                    src="/assets/social images/img-5.jpg"
+                    alt="User avatar"
+                  />
+                </div>
+                <div class="amount">
+                  <input type="text" placeholder="$ Amount" />
+                  <div class="send">Send</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Saving Plan -->
+            <div class="card saving-plan">
+              <h3>Saving Plan</h3>
+              <div class="saving-container">
+                <div class="saving-item">
+                  <div class="saving-info">
+                    <span class="saving-title">Summer Trip</span>
+                    <span class="saving-amount">$3,000</span>
+                  </div>
+                  <p class="saving-subtitle">Achieved in 2 months!</p>
+                  <div class="progress-bar">
+                    <div class="progress success" style="width: 70%"></div>
+                  </div>
+                </div>
+                <div class="saving-item">
+                  <div class="saving-info">
+                    <span class="saving-title">Laptop</span>
+                    <span class="saving-amount">$1,200</span>
+                  </div>
+                  <p class="saving-subtitle">Achieved in 1 month!</p>
+                  <div class="progress-bar">
+                    <div class="progress warning" style="width: 50%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spending Analytics -->
+            <div class="card spending-analytics">
+              <h2>Spending Analytics</h2>
+              <canvas id="spendingAnalyticsChart"></canvas>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/dashboard.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

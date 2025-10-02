@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SLog In to Stashh — Your Money, Your Move</title>
+    <meta
+      name="description"
+      content="Stashh makes everyday money simple. Save smart, track easy, and live freely — from side gig cash to everyday spends."
+    />
+
+    <link rel="stylesheet" href="/css/access.css" />
+
+    <!-- Stashh Favicon -->
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="access-header">
+      <a class="logo" href="/index.html">stashh</a>
+    </header>
+
+    <!-- Access Container -->
+    <section class="access-container access-container--narrow">
+      <div class="access-left">
+        <div class="access-card">
+          <div class="access-card-header">
+            <h2>Log in</h2>
+            <p>Welcome back! Let’s stash smart.</p>
+          </div>
+
+          <form>
+            <input id="email" type="email" placeholder="Email" required />
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+            <span id="password-error" class="error-message"></span>
+            <div class="signup-terms">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn-primary">Log in</button>
+          </form>
+          <p class="login-text">
+            Don’t have an account? <a href="signup.html">Sign up</a>
+          </p>
+          <a href="#" class="forgot-password">Forgot password?</a>
+          <span class="divider">or</span>
+          <button class="google-btn">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google logo"
+              class="google-icon"
+            />
+            <span class="google-text">Log in with Google</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="access-footer">
+      <p>
+        ©2025 Stashh<a href="#">Privacy Policy</a
+        ><a href="#">Terms & Conditions</a>
+      </p>
+    </footer>
+    <script src="/js/login.js"></script>
+  </body>
+</html>
