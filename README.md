@@ -6,7 +6,7 @@ This project highlights my ability to create modern, responsive user interfaces 
 
 ---
 
-## ✨ Features  
+## Features  
 - Fully responsive (desktop, tablet, and mobile — tested on iPhone 14 Pro)  
 - Modern layouts with **Flexbox** & **CSS Grid**  
 - Mobile-friendly navigation menu toggle  
@@ -16,12 +16,12 @@ This project highlights my ability to create modern, responsive user interfaces 
 
 ---
 
-## 🛠 Tech Stack  
+## Tech Stack  
 - **HTML5**  
 - **CSS3**  
 - **JavaScript (ES6)** for interactivity  
 
 ---
 
-## 🚀 Live Demo  
-🔗 [View on Netlify](https://stashh-web.netlify.app/)  
+## Live Demo  
+[View on Netlify](https://stashh-web.netlify.app/)  
