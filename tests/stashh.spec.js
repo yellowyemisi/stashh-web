@@ -39,7 +39,7 @@ test("Critical Path: User should be able to navigate to Sign-up", async ({
   await expect(
     page.getByRole("heading", { name: /create|account|sign up/i })
   ).toBeVisible();
-  await expect(page.locator('input[type="email"]')).toBeOrdinal();
+  await expect(page.locator('input[type="email"]')).toBeVisible();
 
   console.log("Sign-up flow navigation verified!");
 });
