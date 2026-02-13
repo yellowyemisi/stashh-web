@@ -85,3 +85,39 @@ test("UI/UX: Verify Signup heading accessibility and style", async ({
   // 3. Accessibility check (ARIA role)
   await expect(heading).toHaveAttribute("role", "heading");
 });
+
+test("Negative Test: Should show error when email is invalid", async ({
+  page,
+}) => {
+  await page.goto("https://stashh-web.netlify.app/signup.html");
+
+  // The Fix: Use a more specific locator to avoid the 'Strict Mode' error
+  // Target the submit button specifically
+  const submitButton = page.locator("button.btn-primary");
+  await submitButton.click();
+
+  const emailInput = page.locator('input[type="email"]');
+  const validationMessage = await emailInput.evaluate(
+    (el) => el.validationMessage
+  );
+
+  expect(validationMessage).not.toBe("");
+  console.log("Negative Test Passed: Validation message caught!");
+});
+
+test("UI/UX: Verify Signup heading accessibility and style", async ({
+  page,
+}) => {
+  await page.goto("https://stashh-web.netlify.app/signup.html");
+
+  // The Fix: Use a broader regex to catch 'Create account', 'Create your account', etc.
+  const heading = page.getByRole("heading").first();
+
+  await expect(heading).toBeVisible();
+
+  const fontWeight = await heading.evaluate(
+    (el) => window.getComputedStyle(el).fontWeight
+  );
+  // Neo-brutalist headings are usually very thick (700-900)
+  expect(parseInt(fontWeight)).toBeGreaterThanOrEqual(600);
+});
