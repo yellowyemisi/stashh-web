@@ -43,3 +43,45 @@ test("Critical Path: User should be able to navigate to Sign-up", async ({
 
   console.log("Sign-up flow navigation verified!");
 });
+
+test("Negative Test: Should show error when email is invalid", async ({
+  page,
+}) => {
+  await page.goto("https://stashh-web.netlify.app/signup.html");
+
+  // 1. Try to submit with an empty email
+  const submitButton = page.getByRole("button", { name: /create|sign up/i });
+  await submitButton.click();
+
+  // 2. Check for HTML5 validation or a custom error message
+  // Note: If you use a standard HTML5 email input, the browser handles this.
+  const emailInput = page.locator('input[type="email"]');
+  const validationMessage = await emailInput.evaluate(
+    (el) => el.validationMessage
+  );
+
+  // Assert that there is some form of validation feedback
+  expect(validationMessage).not.toBe("");
+  console.log("Negative Test Passed: Validation message caught!");
+});
+
+test("UI/UX: Verify Signup heading accessibility and style", async ({
+  page,
+}) => {
+  await page.goto("https://stashh-web.netlify.app/signup.html");
+
+  const heading = page.getByRole("heading", { name: /create account/i });
+
+  // 1. Check Visibility
+  await expect(heading).toBeVisible();
+
+  // 2. Verify CSS properties (Honing your UI/UX skills)
+  // Let's check if the font-weight is bold (typical for neo-brutalism)
+  const fontWeight = await heading.evaluate(
+    (el) => window.getComputedStyle(el).fontWeight
+  );
+  expect(parseInt(fontWeight)).toBeGreaterThan(600);
+
+  // 3. Accessibility check (ARIA role)
+  await expect(heading).toHaveAttribute("role", "heading");
+});
