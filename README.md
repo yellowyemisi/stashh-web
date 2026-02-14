@@ -4,7 +4,17 @@
 
 A responsive landing page for **Stashh**, a fictional fintech startup designed with inspiration from the **neo-brutalist** design style.
 
-This project highlights my ability to create modern, responsive user interfaces using semantic HTML, CSS, and JavaScript. This project is protected by a professional-grade Playwright E2E testing suite.
+This project highlights my ability to create modern, responsive user interfaces using semantic HTML, CSS, and JavaScript, backed by a professional-grade Playwright E2E testing suite.
+
+---
+
+## Quality Assurance & Testing
+
+This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" design does not compromise user experience.
+
+- **[View Formal Test Plan](./TEST_PLAN.md)**: A detailed exploratory test charter covering UI/UX integrity and functional stability.
+- **[View Bug Report Template](./.github/ISSUE_TEMPLATE/bug_report.md)**: Standardized SOP for defect reporting and tracking.
+- **E2E Regression:** Automated via Playwright to protect critical user paths (Sign-up/Onboarding).
 
 ---
 
