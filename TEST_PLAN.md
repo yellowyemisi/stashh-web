@@ -1,45 +1,81 @@
-Exploratory Test Charter: Stashh Fintech Landing Page
-Project: Stashh (Neo-Brutalist Fintech Interface)
+# 📑 Testing Portfolio: Stashh Fintech Landing Page
 
-Tester: [Your Name]
+**Project:** Stashh (Neo-Brutalist Fintech Interface)  
+**Tester:** [Your Name]  
+**Repository:** [Link to your Repo]
 
-Focus: UI/UX Integrity, Functional Stability, and Cross-Platform Responsiveness.
+---
 
-Mission Statement
-Explore the Stashh landing page to identify UI discrepancies, accessibility hurdles, and functional "dead-ends" within the neo-brutalist design framework. Ensure that the high-contrast aesthetic does not compromise the user's ability to navigate the critical "Sign-up" and "Product Discovery" paths.
+## 🎯 Mission Statement
 
-Risk-Based Test Areas
+Explore the Stashh landing page to identify UI discrepancies, accessibility hurdles, and functional "dead-ends" within the neo-brutalist design framework. The objective is to ensure that high-contrast aesthetics do not compromise user navigation during critical "Sign-up" and "Product Discovery" paths.
 
-1. Visual Integrity (The "Neo-Brutalist" Audit)
-   The Goal: Ensure the bold borders and high-contrast shadows don't overlap or hide content.
+---
 
-Target: Check element spacing on small screens (iPhone SE) vs. large screens (Desktop).
+## 🛡️ Risk-Based Test Strategy
 
-Heuristic: "Does the design remain functional, or does it become 'noise'?"
+### 1. Visual Integrity (The "Neo-Brutalist" Audit)
 
-2. Navigation & Connectivity
-   The Goal: Verify all Call-to-Action (CTA) buttons lead to the correct sub-pages (Login, Signup, Features).
+- **Goal:** Ensure bold borders and high-contrast shadows do not overlap or obscure content.
+- **Target:** Spacing audits on iPhone SE vs. 4K Desktop resolutions.
+- **Heuristic:** "Does the design remain functional, or does it become 'noise'?"
 
-Target: All header and footer links.
+### 2. Navigation & Connectivity
 
-Heuristic: "Is there a way for the user to get 'lost' or stuck on a page without a back button?"
+- **Goal:** Verify all Call-to-Action (CTA) buttons lead to valid endpoints (Login, Signup, Features).
+- **Target:** Global header/footer and primary "Hero" buttons.
+- **Heuristic:** "Is there a way for the user to get 'lost' or stuck?"
 
-3. Form Accessibility (The "Conversion" Path)
-   The Goal: Test the initial inputs on the Signup flow.
+### 3. Form Accessibility (The "Conversion" Path)
 
-Target: Input field focus states and error messaging.
+- **Goal:** Validate input field states and error handling.
+- **Target:** Sign-up form validation and keyboard focus.
+- **Heuristic:** "Does the system guide the user to fix errors, or does it simply fail?"
 
-Heuristic: "If I enter garbage data, does the system help me fix it, or does it just fail?"
+---
 
-Exploratory Log (Example Entries)
-IDTask/AreaFindingsSeverityStatus
-TC-01Desktop NavigationSignup button in header is missing a hover state; user lacks feedback.Low📝 Logged
-TC-02Mobile ViewportOn iPhone 12, the 'Stashh' logo overlaps the hamburger menu icon.High✅ Fixed
-TC-03Color ContrastHigh-contrast yellow/black text on 'Learn More' meets AA accessibility standards.Info🌟 Pass
+## 📋 Exploratory Log & Regression Status
 
-Tools Used
-Manual: Chrome DevTools (Device Emulation).
+| ID            | Task/Area     | Findings                                                | Severity     | Status                   |
+| :------------ | :------------ | :------------------------------------------------------ | :----------- | :----------------------- |
+| **TC-01**     | Desktop Nav   | Signup button missing hover state; lacks user feedback. | Low          | 📝 Logged                |
+| \***\*TC-02** | Mobile View   | Logo overlaps hamburger menu on iPhone 12.              | High         | ✅ Fixed                 |
+| **TC-03**     | Accessibility | Yellow/Black contrast ratio meets WCAG AA standards.    | Info         | 🌟 Pass                  |
+| **TC-101**    | **Funnel**    | **"Get Started" CTA used dummy '#' anchor (Blocker).**  | **Critical** | **✅ Fixed & Automated** |
 
-Automation: Playwright (for regression of found issues).
+---
 
-Documentation: Markdown & Git.
+## 🐞 Detailed Bug Report: TC-101
+
+**Title:** "Get Started" CTA fails to navigate to Onboarding Flow  
+**Priority:** High (Blocker)  
+**Status:** ✅ RESOLVED (Verified via Playwright)
+
+### **Description**
+
+During exploratory testing, the primary "Get Started" button was found to be non-functional, using a dummy anchor tag (`#`). This prevented users from entering the registration funnel, directly impacting conversion rates.
+
+### **Steps to Reproduce**
+
+1. Navigate to `https://stashh-web.netlify.app/`
+2. Click the **'Get Started'** button in the Hero section.
+3. Observe that the URL appends `#` and remains on the landing page.
+
+### **Expected Result**
+
+The user should be redirected to `signup.html`.
+
+### **Automated Verification**
+
+- **Regression Test:** `tests/stashh.spec.js` -> _Critical Path: User should be able to navigate to Sign-up_
+- **Resolution:** Updated HTML `href` to `signup.html`.
+- **CI/CD Evidence:** Successfully verified in GitHub Actions (WebKit engine).
+
+---
+
+## 🛠 Tooling & Infrastructure
+
+- **Manual Testing:** Chrome DevTools for responsive emulation and DOM inspection.
+- **Automation:** **Playwright (JavaScript)** for E2E regression and UI audit.
+- **CI/CD:** **GitHub Actions** with daily scheduled runs (09:00 UTC).
+- **Reporting:** Playwright Trace Viewer and Video Artifacts for root-cause analysis.
