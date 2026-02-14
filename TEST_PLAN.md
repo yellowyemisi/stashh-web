@@ -1,4 +1,4 @@
-# 📑 Testing Portfolio: Stashh Fintech Landing Page
+# Testing Portfolio: Stashh Fintech Landing Page
 
 **Project:** Stashh (Neo-Brutalist Fintech Interface)  
 **Tester:** [Your Name]  
@@ -6,13 +6,13 @@
 
 ---
 
-## 🎯 Mission Statement
+## Mission Statement
 
 Explore the Stashh landing page to identify UI discrepancies, accessibility hurdles, and functional "dead-ends" within the neo-brutalist design framework. The objective is to ensure that high-contrast aesthetics do not compromise user navigation during critical "Sign-up" and "Product Discovery" paths.
 
 ---
 
-## 🛡️ Risk-Based Test Strategy
+## Risk-Based Test Strategy
 
 ### 1. Visual Integrity (The "Neo-Brutalist" Audit)
 
@@ -34,18 +34,18 @@ Explore the Stashh landing page to identify UI discrepancies, accessibility hurd
 
 ---
 
-## 📋 Exploratory Log & Regression Status
+## Exploratory Log & Regression Status
 
-| ID            | Task/Area     | Findings                                                | Severity     | Status                   |
-| :------------ | :------------ | :------------------------------------------------------ | :----------- | :----------------------- |
-| **TC-01**     | Desktop Nav   | Signup button missing hover state; lacks user feedback. | Low          | 📝 Logged                |
-| \***\*TC-02** | Mobile View   | Logo overlaps hamburger menu on iPhone 12.              | High         | ✅ Fixed                 |
-| **TC-03**     | Accessibility | Yellow/Black contrast ratio meets WCAG AA standards.    | Info         | 🌟 Pass                  |
-| **TC-101**    | **Funnel**    | **"Get Started" CTA used dummy '#' anchor (Blocker).**  | **Critical** | **✅ Fixed & Automated** |
+| ID         | Task/Area     | Findings                                                               | Severity     | Status                   |
+| :--------- | :------------ | :--------------------------------------------------------------------- | :----------- | :----------------------- |
+| **TC-01**  | UI Feedback   | Verified 'Get Started' and 'Sign Up' buttons have active hover states. | Info         | 🌟 Pass                  |
+| **TC-02**  | Mobile View   | Logo overlaps hamburger menu on iPhone 12.                             | High         | ✅ Fixed                 |
+| **TC-03**  | Accessibility | Yellow/Black contrast ratio meets WCAG AA standards.                   | Info         | 🌟 Pass                  |
+| **TC-101** | **Funnel**    | **"Get Started" CTA used dummy '#' anchor (Blocker).**                 | **Critical** | **✅ Fixed & Automated** |
 
 ---
 
-## 🐞 Detailed Bug Report: TC-101
+## Detailed Bug Report: TC-101
 
 **Title:** "Get Started" CTA fails to navigate to Onboarding Flow  
 **Priority:** High (Blocker)  
@@ -73,7 +73,7 @@ The user should be redirected to `signup.html`.
 
 ---
 
-## 🛠 Tooling & Infrastructure
+## Tooling & Infrastructure
 
 - **Manual Testing:** Chrome DevTools for responsive emulation and DOM inspection.
 - **Automation:** **Playwright (JavaScript)** for E2E regression and UI audit.
