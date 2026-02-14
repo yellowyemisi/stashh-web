@@ -1,8 +1,8 @@
 # Testing Portfolio: Stashh Fintech Landing Page
 
-**Project:** Stashh (Neo-Brutalist Fintech Interface)  
-**Tester:** [Your Name]  
-**Repository:** [Link to your Repo]
+**Project:** Stashh (Neo-Brutalist Fictional Fintech Interface)  
+**Tester:** Kate Williams  
+**Repository:** https://github.com/yellowyemisi/stashh-web.git
 
 ---
 
