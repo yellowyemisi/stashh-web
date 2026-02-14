@@ -38,12 +38,27 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 
 ---
 
-## Tech Stack
+## Tech Stack & Tools
 
-- **HTML5**
-- **CSS3**
-- **JavaScript (ES6)** for interactivity
-- **Playwright** for automation tests
+### **Core Development**
+
+- **HTML5 & CSS3:** Semantic structures with a **Neo-Brutalist** design system (utilizing Flexbox and CSS Grid).
+- **JavaScript (ES6+):** Functional interactivity and DOM manipulation.
+
+---
+
+### **Quality Assurance & Automation**
+
+- **Playwright:** End-to-End (E2E) testing framework for cross-browser verification across **Chromium, Firefox, and WebKit**.
+- **Trace Viewer:** For deep-dive debugging of asynchronous test failures.
+
+---
+
+### **DevOps & CI/CD**
+
+- **GitHub Actions:** Automated CI pipelines for regression testing suites and daily scheduled health checks.
+- **Artifact Management:** Systematic storage and retention of critical test evidence, including HTML reports, videos, and trace logs.
+- **Netlify:** Continuous Deployment (CD) for the live production environment.
 
 ---
 
