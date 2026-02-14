@@ -65,3 +65,35 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 ## Live Demo
 
 [View on Netlify](https://stashh-web.netlify.app/)
+
+## Getting Started & Running Tests
+
+To explore the codebase and execute the automated test suite locally, follow these steps:
+
+### **1. Prerequisites**
+
+Ensure you have [Node.js](https://nodejs.org/) installed (v16 or higher recommended).
+
+### **2. Installation**
+
+Clone the repository and install the necessary dependencies:
+
+```bash
+git clone https://github.com/yellowyemisi/stashh-web.git
+cd stashh-web
+npm install
+npx playwright install
+
+```
+
+### **3. Executing Tests**
+
+You can run the full suite or specific browser engines using the following commands:
+
+- **Run all tests (Headless):** npx playwright test
+- **Run tests with UI Mode (Great for debugging):** npx playwright test --ui
+- **Run tests on a specific browser (e.g., WebKit):** npx playwright test --project=webkit
+
+### **4. Generating Reports**
+
+After the tests complete, you can view the detailed HTML report: npx playwright show-report
