@@ -16,6 +16,11 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 - **[View Bug Report Template](./.github/ISSUE_TEMPLATE/bug_report.md)**: Standardized SOP for defect reporting and tracking.
 - **E2E Regression:** Automated via Playwright to protect critical user paths (Sign-up/Onboarding).
 
+### 💡 Lessons Learned
+
+- **Infrastructure Resilience:** Realized that "it works on my machine" is a risk; shifting to GitHub Actions ensured environment parity.
+- **Observability:** Learned to treat Trace Viewer data as essential evidence, not just an optional tool.
+
 ---
 
 ## Features
@@ -35,6 +40,47 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 - **Scheduled Testing:** Daily health checks at 09:00 UTC to ensure 24/7 uptime.
 - **Multi-Layer Testing:** Navigation (Positive), form validation (Negative), and UI/UX Accessibility (Visual).
 - **Observability:** Trace Viewer and Video recordings for deep-dive debugging.
+
+---
+
+## Environment & Troubleshooting: The WebKit Compatibility Challenge
+
+A significant portion of this project involved overcoming architectural hurdles to maintain **100% browser engine parity** (Chromium, Firefox, and WebKit) while developing on a legacy **macOS 12 (Monterey)** environment.
+
+### The Problem
+
+Modern Playwright releases (v1.50+) dropped support for WebKit binaries on macOS 12. Running `npx playwright install webkit` locally resulted in a broken driver, making local cross-browser validation impossible for WebKit.
+
+### Explored Architectures & Hurdles
+
+Before "shifting left," I explored several local workarounds to bridge the compatibility gap. Each attempt provided deep insights into virtualization and dependency management:
+
+| Approach                 | Technology         | Result    | Technical Blocker                                                                                                          |
+| :----------------------- | :----------------- | :-------- | :------------------------------------------------------------------------------------------------------------------------- |
+| **Downgrade**            | Playwright v1.45   | ❌ Failed | Incompatibility with modern test features and latest Playwright APIs.                                                      |
+| **Containerization**     | Docker + Colima    | ❌ Failed | macOS 12’s `virtualization.framework` is too old for modern Linux-based WebKit images.                                     |
+| **Emulation**            | QEMU               | ❌ Failed | **Dependency Loop:** QEMU required modern Python versions; compiling from source failed due to missing legacy C libraries. |
+| **Alternative Runtimes** | OrbStack / Rancher | ❌ Failed | Kernel-level limitations on macOS 12 prevented the virtualization engines from starting.                                   |
+
+### The Solution: Cloud-First Strategy
+
+The "Aha!" moment was realizing that the most scalable solution wasn't fixing the local hardware—it was **Shifting Left.** I architected a **CI/CD pipeline using GitHub Actions** to bypass local hardware limitations entirely. By moving execution to the cloud (Ubuntu-latest), I ensured:
+
+- **Native WebKit Support:** Full compatibility within a modern Linux environment.
+- **Consistency:** Eliminating "it works on my machine" syndrome.
+- **Visibility:** Automated daily runs and push-triggers ensure 24/7 visibility into site health.
+
+### How to View Test Results
+
+Due to the local environment constraints mentioned above, WebKit tests are best viewed via the automated pipeline:
+
+1. Navigate to the **Actions** tab in this repository.
+2. Select the latest **Playwright Tests** workflow run.
+3. Under **Artifacts**, download the `playwright-report` to view full Traces and Videos of the execution.
+
+---
+
+_“A great QA Engineer doesn’t just find bugs; they build systems that thrive despite limitations.”_
 
 ---
 
@@ -66,6 +112,8 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 
 [View on Netlify](https://stashh-web.netlify.app/)
 
+---
+
 ## Getting Started & Running Tests
 
 To explore the codebase and execute the automated test suite locally, follow these steps:
@@ -90,9 +138,12 @@ npx playwright install
 
 You can run the full suite or specific browser engines using the following commands:
 
-- **Run all tests (Headless):** npx playwright test
-- **Run tests with UI Mode (Great for debugging):** npx playwright test --ui
-- **Run tests on a specific browser (e.g., WebKit):** npx playwright test --project=webkit
+- **Run all tests (Headless):** `npx playwright test`
+- **Run tests with UI Mode:** `npx playwright test --ui`
+- **Run tests on a specific browser:** `npx playwright test --project=webkit`
+
+> [!IMPORTANT]  
+> **macOS 12 (Monterey) Users:** Due to binary deprecation, WebKit tests may fail locally. It is recommended to rely on the **GitHub Actions CI pipeline** for WebKit validation (see the "Environment & Troubleshooting" section above).
 
 ### **4. Generating Reports**
 

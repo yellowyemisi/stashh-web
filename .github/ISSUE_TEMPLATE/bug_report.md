@@ -6,6 +6,9 @@ labels: bug, automated-test-failure
 assignees: ""
 ---
 
+**Related Test Case ID**
+(e.g., TC-101, TC-02)
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
@@ -23,11 +26,12 @@ A clear and concise description of what you expected to happen.
 **Screenshots/Video**
 Attach the Playwright Video or Trace Viewer screenshot here.
 
-**Desktop (please complete the following information):**
+**Environment Details:**
 
-- OS: [e.g. iOS]
-- Browser: [e.g. chrome, safari]
-- Version: [e.g. 22]
+- **Execution Context:** [e.g., Local Machine, GitHub Actions CI]
+- **OS:** [e.g., macOS 12 Monterey, Ubuntu-latest]
+- **Browser:** [e.g., Chromium, Firefox, WebKit]
+- **Playwright Version:** [e.g., v1.50.0]
 
 **Additional context**
 Add any other context about the problem here (e.g., Link to the failed GitHub Action run).
