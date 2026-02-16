@@ -33,8 +33,6 @@ Explore the Stashh landing page to identify UI discrepancies, accessibility hurd
 
 ---
 
-=======
-
 ## Environment & Execution Strategy
 
 Due to **macOS 12 (Monterey)** limitations where Playwright v1.50+ dropped native WebKit support, this project utilizes a **Shift-Left Infrastructure** model to ensure quality is not compromised by local hardware.
@@ -82,8 +80,29 @@ During exploratory testing, the primary "Get Started" button was found to be non
 
 ## Lessons Learned & Technical Resilience
 
-> > > > > > > 8467927 (chore: implement cloud-first QA architecture and cross-browser CI)
-
 - **Infrastructure as Code:** Facing local virtualization failures (QEMU/Colima) highlighted that QA success is dependent on environment reliability. Shifting to a cloud-based runner was the most efficient architectural pivot.
 - **Traceability over Logs:** In a headless environment, visual evidence is key. Implementing systematic artifact management (Videos/Traces) turned "failing builds" into "actionable data."
 - **Design vs. Function:** Neo-brutalist designs are visually heavy; testing proved that high-contrast elements must be backed by robust aria-labels and semantic HTML to remain accessible to all users.
+
+---
+
+## Test Evidence & CI/CD Traceability
+
+To maintain a high standard of transparency, every automated run generates a suite of evidence. This ensures that even "Cloud-First" executions are fully auditable by stakeholders.
+
+### **Latest Execution Status**
+
+- **Status:** 🌟 **Passing**
+- **Environment:** GitHub Actions (Ubuntu-latest)
+- **Execution Engines:** Chromium, Firefox, WebKit (100% Parity)
+- **Daily Health Check:** Scheduled at 09:00 UTC
+
+### **Evidence Artifacts**
+
+For every failing or successful run, the following artifacts are preserved for 30 days:
+
+1. **Playwright Trace Viewer:** A millisecond-by-millisecond "Black Box" recording of the test execution, including network logs and DOM snapshots.
+2. **Video Recordings:** Full mp4 recordings of the browser interaction for visual verification of UI states.
+3. **HTML Reports:** A comprehensive summary of all test steps and assertions.
+
+> **Review Tip:** To view the most recent live evidence, navigate to the [GitHub Actions tab](https://github.com/yellowyemisi/stashh-web/actions) and download the `playwright-report` from the latest run.

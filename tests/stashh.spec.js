@@ -1,14 +1,12 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
 
-// 1. Basic Load Test
 test("Stashh landing page loads", async ({ page }) => {
   await page.goto("https://stashh-web.netlify.app/");
   await expect(page).toHaveTitle(/Stashh/i);
 });
 
-// 2. Navigation Test
-test("Critical Path: User should be able to navigate to Sign-up", async ({
+test("TC-101 @smoke @regression - Critical Path: User should be able to navigate to Sign-up", async ({
   page,
 }) => {
   await page.goto("https://stashh-web.netlify.app/");
@@ -17,7 +15,6 @@ test("Critical Path: User should be able to navigate to Sign-up", async ({
   await expect(page).toHaveURL(/.*signup/);
 });
 
-// 3. Negative Test
 test("Negative Test: Should show error when email is invalid", async ({
   page,
 }) => {
@@ -31,7 +28,7 @@ test("Negative Test: Should show error when email is invalid", async ({
   expect(validationMessage).not.toBe("");
 });
 
-test("UI/UX: Verify Signup button styling and hover state", async ({
+test("TC-01 @smoke @regression - UI/UX: Verify Signup button styling and hover state", async ({
   page,
 }) => {
   await page.goto("https://stashh-web.netlify.app/signup.html");
