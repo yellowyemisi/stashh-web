@@ -22,7 +22,7 @@ Explore the Stashh landing page to identify UI discrepancies, accessibility hurd
 
 ### 2. Navigation & Connectivity
 
-- **Goal:** Verify all Call-to-Action (CTA) buttons lead to valid endpoints (Login, Signup, Features).
+- **Goal:** Verify that all Call-to-Action (CTA) buttons lead to valid endpoints (Login, Signup, Features).
 - **Target:** Global header/footer and primary "Hero" buttons.
 - **Heuristic:** "Is there a way for the user to get 'lost' or stuck?"
 
