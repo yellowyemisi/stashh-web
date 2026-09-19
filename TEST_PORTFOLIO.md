@@ -1,8 +1,6 @@
 # Testing Portfolio: Stashh Fintech Landing Page
 
-**Project:** Stashh (Neo-Brutalist Fictional Fintech Interface)  
-**QA Lead / Engineer:** Kate Williams  
-**Repository:** https://github.com/yellowyemisi/stashh-web.git
+**Project:** Stashh (Neo-Brutalist Fictional Fintech Interface)
 
 ---
 
