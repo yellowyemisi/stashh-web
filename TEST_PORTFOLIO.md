@@ -1,6 +1,8 @@
-# Testing Portfolio: Stashh Fintech Landing Page
+# Test Portfolio: Stashh Fintech Landing Page
 
-**Project:** Stashh (Neo-Brutalist Fictional Fintech Interface)
+**Project:** Stashh (Neo-Brutalist Fictional Fintech Interface)  
+**Software QA Engineer:** Kate Williams  
+**Repository:** https://github.com/yellowyemisi/stashh-web.git
 
 ---
 
@@ -100,8 +102,8 @@ For every passing or failing run, the following artifacts are preserved for 30 d
 
 ---
 
-## Lessons Learned & Technical Resilience
+## Lessons Learned
 
-- **Infrastructure as Code:** Navigating local virtualization barriers (QEMU/Colima) proved that QA success relies on environment predictability. Shifting execution to cloud-based runners was the most efficient architectural choice.
-- **Traceability over Raw Logs:** In headless environments, visual evidence is critical. Implementing systematic artifact management (Videos/Traces) turned raw build failures into actionable engineering insights.
-- **Design vs. Accessibility:** High-contrast, neo-brutalist aesthetics require explicit semantic HTML and `aria-label` attributes to ensure visually heavy designs remain accessible to screen readers and keyboard navigation.
+- Navigating local virtualization barriers (QEMU/Colima) proved that QA success relies on environment predictability. Shifting execution to cloud-based runners was the most efficient architectural choice.
+- In headless environments, visual evidence is critical. Implementing systematic artifact management (Videos/Traces) turned raw build failures into actionable engineering insights.
+- High-contrast, neo-brutalist aesthetics require explicit semantic HTML and `aria-label` attributes to ensure visually heavy designs remain accessible to screen readers and keyboard navigation.
