@@ -11,19 +11,22 @@ test("Stashh landing page loads", async ({ page }) => {
 
 /**
  * TC-101: Validates the core 'Sign-up' conversion funnel.
- * Targets the hero CTA link to ensure cross-viewport parity across Desktop and Mobile Safari.
+ * Targets the hero primary CTA button (a.btn-primary) which is visible across all viewports.
  */
 test("TC-101 @smoke @regression - Critical Path: User should be able to navigate to Sign-up", async ({
   page,
 }) => {
   await page.goto("/");
 
-  // Target the primary signup link (works on both Desktop and Mobile viewports)
-  const signUpButton = page.locator('a[href*="signup"]').first();
+  // Target the primary CTA in the hero section that is guaranteed visible on mobile and desktop
+  const heroSignUpBtn = page
+    .locator("a.btn-primary")
+    .filter({ hasText: /start stashhing/i });
 
-  await expect(signUpButton).toBeVisible();
-  await signUpButton.click();
+  await expect(heroSignUpBtn).toBeVisible({ timeout: 10000 });
+  await heroSignUpBtn.click();
 
+  // Verify navigation to signup page
   await expect(page).toHaveURL(/.*signup/);
 });
 
