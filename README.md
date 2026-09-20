@@ -4,7 +4,7 @@
 
 A responsive landing page for **Stashh**, a fictional fintech startup designed with inspiration from the **neo-brutalist** design style.
 
-This project highlights my ability to create modern, responsive user interfaces using semantic HTML, CSS, and JavaScript, backed by a professional-grade Playwright E2E and API testing suite.
+This project highlights my ability to create modern, responsive user interfaces using semantic HTML, CSS, and JavaScript, backed by a professional-grade Playwright E2E and API health check testing suite.
 
 ---
 
@@ -14,7 +14,7 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 
 - **[View Formal Test Portfolio](./TEST_PORTFOLIO.md)**: A detailed exploratory test charter covering UI/UX integrity, mobile viewport parity, and functional stability.
 - **[View Bug Report Template](./.github/ISSUE_TEMPLATE/bug_report.md)**: Standardized SOP for defect reporting and tracking.
-- **E2E & API Regression:** Automated via Playwright to protect critical user paths (Sign-up/Onboarding) and validate API payloads.
+- **E2E & API Health Checks:** Automated via Playwright to protect critical user paths (Sign-up/Onboarding) and verify basic backend availability.
 
 ### 💡 Lessons Learned
 
@@ -40,7 +40,7 @@ This project follows a rigorous QA lifecycle to ensure the bold "Neo-Brutalist" 
 - **CI/CD Integration:** Automated cross-browser regression suites triggered on every push via GitHub Actions.
 - **Cross-Engine Parity:** Execution matrix validating Chromium, Firefox, WebKit (Desktop Safari), and Mobile Safari.
 - **Scheduled Testing:** Daily health checks at 09:00 UTC (`0 9 * * *`) to ensure continuous site availability.
-- **Multi-Layer Strategy:** Navigation funnel verification (Positive), form constraint validation (Negative), UI/UX CSS hover/weight specs (Visual), and payload contract verification (API).
+- **Multi-Layer Strategy:** Navigation funnel verification (Positive), form constraint validation (Negative), UI/UX CSS hover/weight specs (Visual), and API availability checks via GET `/health`.
 - **Observability:** Automated storage of Trace Viewer zips, video recordings, and failure screenshots for deep-dive debugging.
 
 ---
@@ -98,7 +98,7 @@ _“A great QA Engineer doesn’t just find bugs; they build systems that thrive
 ### **Quality Assurance & Automation**
 
 - **Playwright:** E2E and API testing framework configured with `baseURL` and cross-browser projects (**Chromium, Firefox, WebKit, Mobile Safari**).
-- **Postman & API Testing:** Schema validation, contract checks, and state sequence testing (OTP / KYC / Registration).
+- **API Health Check Testing:** Validating HTTP status codes (`200 OK`) and uptime JSON responses.
 - **Trace Viewer & Screenshots:** Artifact capture on failure for root-cause debugging.
 
 ---
