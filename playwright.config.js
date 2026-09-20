@@ -19,8 +19,8 @@ export default defineConfig({
 
   /* Shared settings across all projects */
   use: {
-    /* Base URL for your deployed staging/production or local server */
-    // baseURL: "https://your-stashh-url.netlify.app",
+    /* Base URL for your live deployed site */
+    baseURL: "https://stashh-web.netlify.app",
 
     /* Record traces on failure for cloud debugging */
     trace: "retain-on-failure",
