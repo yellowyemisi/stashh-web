@@ -11,7 +11,7 @@ test("Stashh landing page loads", async ({ page }) => {
 
 /**
  * TC-101: Validates the core 'Sign-up' conversion funnel.
- * Includes mobile viewport check for responsive navigation.
+ * Supports both desktop navigation and mobile layouts.
  */
 test("TC-101 @smoke @regression - Critical Path: User should be able to navigate to Sign-up", async ({
   page,
@@ -19,20 +19,28 @@ test("TC-101 @smoke @regression - Critical Path: User should be able to navigate
 }) => {
   await page.goto("/");
 
-  // Handle mobile hamburger nav if collapsed
-  const navToggle = page.locator(
-    ".nav-toggle, button[aria-label*='menu'i], .hamburger"
-  );
-  if (isMobile && (await navToggle.isVisible())) {
-    await navToggle.click();
+  // 1. If mobile, attempt to open any collapsed menu overlay/toggle
+  if (isMobile) {
+    const mobileMenuButton = page
+      .locator("header button, .menu-btn, #menu-toggle, nav button")
+      .first();
+    if (await mobileMenuButton.isVisible()) {
+      await mobileMenuButton.click();
+      await page.waitForTimeout(300); // Allow mobile menu transition
+    }
   }
 
-  const signUpButton = page
-    .getByRole("link", { name: /sign up|get started/i })
+  // 2. Locate the primary sign-up CTA (matches <a> links OR <button> elements)
+  const signUpCTA = page
+    .locator("a, button")
+    .filter({ hasText: /sign up|get started|create account/i })
     .first();
-  await expect(signUpButton).toBeVisible();
-  await signUpButton.click();
 
+  // 3. Ensure element is present and click
+  await expect(signUpCTA).toBeVisible({ timeout: 10000 });
+  await signUpCTA.click();
+
+  // 4. Verify URL transition to signup
   await expect(page).toHaveURL(/.*signup/);
 });
 
