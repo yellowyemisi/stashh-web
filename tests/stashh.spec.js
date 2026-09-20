@@ -11,36 +11,19 @@ test("Stashh landing page loads", async ({ page }) => {
 
 /**
  * TC-101: Validates the core 'Sign-up' conversion funnel.
- * Supports both desktop navigation and mobile layouts.
+ * Targets the hero CTA link to ensure cross-viewport parity across Desktop and Mobile Safari.
  */
 test("TC-101 @smoke @regression - Critical Path: User should be able to navigate to Sign-up", async ({
   page,
-  isMobile,
 }) => {
   await page.goto("/");
 
-  // 1. If mobile, attempt to open any collapsed menu overlay/toggle
-  if (isMobile) {
-    const mobileMenuButton = page
-      .locator("header button, .menu-btn, #menu-toggle, nav button")
-      .first();
-    if (await mobileMenuButton.isVisible()) {
-      await mobileMenuButton.click();
-      await page.waitForTimeout(300); // Allow mobile menu transition
-    }
-  }
+  // Target the primary signup link (works on both Desktop and Mobile viewports)
+  const signUpButton = page.locator('a[href*="signup"]').first();
 
-  // 2. Locate the primary sign-up CTA (matches <a> links OR <button> elements)
-  const signUpCTA = page
-    .locator("a, button")
-    .filter({ hasText: /sign up|get started|create account/i })
-    .first();
+  await expect(signUpButton).toBeVisible();
+  await signUpButton.click();
 
-  // 3. Ensure element is present and click
-  await expect(signUpCTA).toBeVisible({ timeout: 10000 });
-  await signUpCTA.click();
-
-  // 4. Verify URL transition to signup
   await expect(page).toHaveURL(/.*signup/);
 });
 
